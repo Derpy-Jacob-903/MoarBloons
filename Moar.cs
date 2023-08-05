@@ -25,13 +25,22 @@ namespace MoarBloons
 
         public override void ModifyEasyRoundModels(RoundModel roundModel, int round)
         {
+            //
+            var bloonInterval = 20 - round;
+            if (bloonInterval < 7)
+            {
+                bloonInterval = (int)Il2CppSystem.Math.Ceiling(7.0 - round / 20.0);
+            }
+            new Function(bloonInterval, 0)
+
+            //
             switch (round)
             {
                 case 0:
-                    roundModel.AddBloonGroup(BloonType.Red, 5, 0, 300);
+                    roundModel.AddBloonGroup(BloonType.Red, 14, 0, 300);
                     break;
                 case 1:
-                    roundModel.AddBloonGroup(BloonType.Red, 10, 0, 600);
+                    roundModel.AddBloonGroup(BloonType.Red, 300, 0, 600);
                     break;
                 case 2:
                     roundModel.AddBloonGroup(BloonType.Red, 20, 0, 600);
