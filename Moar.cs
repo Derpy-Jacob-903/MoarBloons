@@ -482,12 +482,64 @@ namespace MoarBloons
         {
             switch (round) { 
             
-                case 0:
-                    return "Err... is this thing on?";
                 case 1:
-                    return "Well, Hello, I, DogeisCut, has prepared a collection of rounds for you to pop your way through. Enjoy the new custom bloons and see how far you can get! But first, we must start with the basics.";
-                case 2:
-                    return "That means, a lot of the basic bloons, like reds,";
+                    return "Pop, pop, pop. Too easy.";
+                //case 4:
+                //    return "You can unlock all 8 tracks by passing tracks 1 to 4 in easy mode.";
+                case 6:
+                    return "50 blues heading down next.";
+                case 7:
+                    return "The Pop Count under the tower name is how many bloons that thing has popped.";
+                case 9:
+                    return "Road spikes are good for getting those bloons that slip through your defenses.";
+                case 10:
+                    return "To recap, yellows spawn, greens, that spawn blues, that spawn reds. Yellows move very fast.";
+                case 11:
+                    return "Rainbow bloons are fast and mean, and have 2 blacks and 2 whites in them.";
+                case 13:
+                    return "The permafrost and snap freeze upgrades for Ice Towers are powerful, you should try them.";
+                case 14:
+                    return "Try not to rely on road spikes too much, they don\'t earn as much as they cost.";
+                case 15:
+                    return "Strategies that work well on some tracks may not work well on others.";
+                case 16:
+                    return "You can play any of the tracks on Easy, Medium, or Hard difficulties. How cool is that?";
+                case 18:
+                    return "Red Hot Rangs allows boomerangs to pop lead bloons.";
+                case 19:
+                    return "Lead bloons move slowly, but they are immune to sharp objects. You need to use bombs or similar.";
+                case 21:
+                    return "Monkey glue is good on tracks with multiple paths - you can split the oncoming streams.";
+                case 22:
+                    return "Next level will be a doozy.";
+                case 24:
+                    return "Monkey Villages do not attack, they just increase the range of all stuff in their radius.";
+                case 26:
+                    return "Some tracks are hard on easy, and others are easy on hard. Ain\'t life funny.";
+                case 27:
+                    return "In BTD6, every tower type has 15 upgrades, split into 3 upgrade paths.";
+                case 28:
+                    return "(though this gamemode lmites you to tier 2 upgrades)";
+                case 29:
+                    return "Black bloons are immune to bombs, white ones are immune to freezing.";
+                case 30:
+                    return "Did you know the Missile Launcher upgrade also gives a slight fire rate increase?";
+                case 32:
+                    return "60 black bloons followed by 3 ceramic coming up.";
+                case 33:
+                    return "Enjoying the ceramic bloons? They\'re ceramic, so they take several hits to pop. They have rainbows in them too :)";
+                case 36:
+                    return "Beware the MOAB - its coming next level.";
+                case 37:
+                    return "MOAB stands for Massive Ornary Air Blimp, not Mother Of All Bloons. Either way, it brings pain.";
+                case 3:
+                    return "and blues.";
+                case 3:
+                    return "and blues.";
+                case 3:
+                    return "and blues.";
+                case 3:
+                    return "and blues.";
                 case 3:
                     return "and blues.";
                 default:
