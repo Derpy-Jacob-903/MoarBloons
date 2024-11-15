@@ -23,6 +23,7 @@ namespace MoarBloons
         public override void ModifyBaseGameModeModel(ModModel gameModeModel)
         {
             gameModeModel.UseRoundSet<Moar>();
+            gameModeModel.SetEndingRound(50);
         }
     }
 }

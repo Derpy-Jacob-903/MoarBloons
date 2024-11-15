@@ -3,6 +3,7 @@ using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Extensions;
 using Il2CppAssets.Scripts.Data.Knowledge.RelicKnowledge;
 using Il2CppAssets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppSystem;
 using Il2CppSystem.Threading.Tasks;
 using System;
@@ -31,20 +32,22 @@ namespace MoarBloons
             {
                 bloonInterval = (int)Il2CppSystem.Math.Ceiling(7.0 - round / 20.0);
             }
-            new Function(bloonInterval, 0)
+            //new Function(bloonInterval, 0)
 
             //
             switch (round)
             {
                 case 0:
-                    roundModel.AddBloonGroup(BloonType.Red, 14, 0, 300);
+                    roundModel.AddBloonGroup(BloonType.Red, 14, 0, 770);
                     break;
                 case 1:
-                    roundModel.AddBloonGroup(BloonType.Red, 300, 0, 600);
+                    roundModel.AddBloonGroup(BloonType.Red, 30, 0, 1650);
                     break;
                 case 2:
-                    roundModel.AddBloonGroup(BloonType.Red, 20, 0, 600);
-                    roundModel.AddBloonGroup(BloonType.Red, 10, 300, 600);
+                    roundModel.AddBloonGroup(BloonType.Red, 10, 0, 550);
+                    roundModel.AddBloonGroup(BloonType.Blue, 4, 550, 770);
+                    roundModel.AddBloonGroup(BloonType.Red, 5, 770, 1045);
+                    roundModel.AddBloonGroup(BloonType.Blue, 4, 1045, 1265);
                     break;
                 case 3:
                     roundModel.AddBloonGroup(BloonType.Blue, 20, 0, 600);
@@ -215,6 +218,9 @@ namespace MoarBloons
         }
         public override void ModifyMediumRoundModels(RoundModel roundModel, int round)
         {
+            //freeplay round RNG
+             
+            //
             switch (round)
             {
                 case 40:
@@ -278,53 +284,77 @@ namespace MoarBloons
                     roundModel.AddBloonGroup(BloonType.PurpleRegrow, 37-5, 0, 1000);
                     roundModel.AddBloonGroup(BloonType.CeramicFortified, 10, 0, 1000);
                     break;
-                case 51:
-                    roundModel.AddBloonGroup(BloonType.Moab, 6, 0, 800);
-                    roundModel.AddBloonGroup<ObsidianFortified>(50, 0, 800);
-                    break;
-                case 52:
-                    roundModel.AddBloonGroup(BloonType.Moab, 8, 0, 600);
-                    roundModel.AddBloonGroup<ObsidianFortified>(60, 0, 800);
-                    break;
-                case 53:
-                    roundModel.AddBloonGroup(BloonType.Moab, 5, 0, 1000);
-                    roundModel.AddBloonGroup(BloonType.Moab, 5, 100, 1100);
-                    roundModel.AddBloonGroup<ObsidianRegrowFortified>(70, 0, 800); //rbe: 2520 (36 per fortified obsidian)
-                    break;
-                case 54:
-                    roundModel.AddBloonGroup(BloonType.Moab, 6, 0, 1500); // 3696 (616 per moab)
-                    roundModel.AddBloonGroup(BloonType.Moab, 6, 200, 1700); // 3696
-                    roundModel.AddBloonGroup<ObsidianCamoRegrow>(70, 0, 800); //rbe: 2450 (35 per obsidian)
-                    //total rbe: 9842
-                    break;
-                case 55:
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 8, 0, 600);
-                    roundModel.AddBloonGroup(BloonType.ZebraRegrowCamo, 42 - 5, 0, 600);
-                    roundModel.AddBloonGroup(BloonType.PurpleRegrowCamo, 37 - 5, 0, 600);
-                    roundModel.AddBloonGroup(BloonType.CeramicFortifiedCamo, 10, 0, 600);
-                    break;
-                case 56:
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 5, 0, 1000);
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 5, 100, 1100);
-                    roundModel.AddBloonGroup<ObsidianCamoRegrowFortified>(80, 0, 1100);
-                    roundModel.AddBloonGroup(BloonType.PurpleRegrow, 200, 0, 1100);
-                    break;
-                case 57:
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 6, 0, 1000);
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 6, 100, 1100);
-                    roundModel.AddBloonGroup<ObsidianCamoRegrowFortified>(80, 0, 1100);
-                    roundModel.AddBloonGroup(BloonType.PurpleRegrowCamo, 250, 0, 1100);
-                    break;
-                case 58:
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 6, 0, 1500);
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 6, 200, 1700);
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 6, 400, 1900);
-                    break;
-                case 59: //round 60
-                    roundModel.AddBloonGroup(BloonType.Bfb, 1, 200, 201);//rbe: 3164
-                    roundModel.AddBloonGroup(BloonType.Bfb, 1, 800, 801);//rbe: 3164
-                    roundModel.AddBloonGroup<Lmao>(1, 1500, 1501);
-                    //total rbe: 6328
+                default:
+                    System.Random rnd = new System.Random();
+                    //var _loc1_:int = 0; use round
+                    var _loc2_ = 0;
+                    var _loc3_ = 0;
+                    var _loc4_ = 0;
+                    var _loc5_ = 0;
+
+                    _loc2_ = 7 + round - 50;
+                    _loc3_ = 0;
+                    while (_loc3_ < _loc2_)
+                    {
+                        _loc4_ = 5;
+                        _loc5_ = rnd.Next(round);
+                        //if (diff == "medium")
+                        //{
+                        //    _loc5_ += 3;
+                        //}
+                        //if (diff == "hard")
+                        //{
+                        //    _loc5_ += 7;
+                        //}
+                        if (_loc5_ > 10)
+                        {
+                            _loc4_ = 6;
+                        }
+                        if (_loc5_ > 16)
+                        {
+                            _loc4_ = 7;
+                        }
+                        if (_loc5_ > 29)
+                        {
+                            _loc4_ = 8;
+                        }
+                        if (_loc5_ > 39)
+                        {
+                            _loc4_ = 9;
+                        }
+                        if (_loc5_ > 47)
+                        {
+                            _loc4_ = 10;
+                        }
+                        switch (_loc4_)
+                        {
+                            case 5:
+                                //ABSTL(10, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 6:
+                                //ABSTL(10, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 7:
+                                //ABSTL(10, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 8:
+                                //ABSTL(_loc1_ - 40, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 9:
+                                //ABSTL(_loc1_ - 42, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 10:
+                                //ABSTL(Math.round((_loc1_ - 50) / 3), _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                        }
+                        _loc3_++;
+                    }
                     break;
             }
         }
@@ -332,15 +362,7 @@ namespace MoarBloons
         {
             switch (round)
             {
-                case 60:
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 6, 0, 1000);
-                    roundModel.AddBloonGroup(BloonType.Moab, 6, 100, 1100);
-                    roundModel.AddBloonGroup<Lmao>(3, 0, 1000);
-                    break;
-                case 61:
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 4, 0, 500);
-                    roundModel.AddBloonGroup<ObsidianCamoRegrow>(30, 0, 500);
-                    break;
+                
                 case 62:
                     //3 Ceramic and Obsidian rushes
                     roundModel.AddBloonGroup(BloonType.Lead, 70, 0, 2300);
@@ -354,128 +376,94 @@ namespace MoarBloons
                     roundModel.AddBloonGroup(BloonType.CeramicFortified, 32, 2200, 2300);
                     roundModel.AddBloonGroup<ObsidianFortified>(64, 2200, 2300);
                     break;
-                case 63:
-                    roundModel.AddBloonGroup(BloonType.BfbFortified, 1, 0, 0);
-                    roundModel.AddBloonGroup(BloonType.Bfb, 1, 333, 333);
-                    roundModel.AddBloonGroup(BloonType.Bfb, 1, 666, 666);
-                    break;
-                case 64:
-                    roundModel.AddBloonGroup(BloonType.BfbFortified, 1, 0, 0);
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 8, 600, 1000);
-                    break;
-                case 65:
-                    break;
-                case 66:
-                    break;
-                case 67:
-                    break;
-                case 68:
-                    roundModel.AddBloonGroup(BloonType.RedRegrowCamo, 2300 * 3, 0, 2300);
+                default:
+                    System.Random rnd = new System.Random();
+                    //var _loc1_:int = 0; use round
+                    var _loc2_ = 0;
+                    var _loc3_ = 0;
+                    var _loc4_ = 0;
+                    var _loc5_ = 0;
+                    var bloonArray = new Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray(6);
+                    bloonArray[0] = "Red";
+                    bloonArray[1] = "Blue";
+                    bloonArray[2] = "Green";
+                    bloonArray[3] = "Yellow";
+                    bloonArray[4] = "Eevee-MasterOfIce";
+                    bloonArray[5] = "Eevee-Eevee Paragon";
 
-                    roundModel.AddBloonGroup(BloonType.White, 128 * 3, 0, 100);
-                    roundModel.AddBloonGroup(BloonType.Rainbow, 128 * 3, 0, 100);
-                    roundModel.AddBloonGroup<Trans>(128*3, 0, 100);
-
-                    roundModel.AddBloonGroup(BloonType.White, 128 * 3, 1200, 1300);
-                    roundModel.AddBloonGroup(BloonType.Rainbow, 128 * 3, 1200, 1300);
-                    roundModel.AddBloonGroup<Trans>(128 * 3, 1200, 1300);
-
-                    roundModel.AddBloonGroup(BloonType.White, 256 * 3, 2200, 2300);
-                    roundModel.AddBloonGroup(BloonType.Rainbow, 256 * 3, 2200, 2300);
-                    roundModel.AddBloonGroup<Trans>(256 * 3, 2200, 2300);
-                    break;
-                case 69:
-                    break;
-                case 70:
-                    break;
-                case 71:
-                    break;
-                case 72:
-                    break;
-                case 73:
-                    break;
-                case 74:
-                    break;
-                case 75:
-                    break;
-                case 76:
-                    break;
-                case 77:
-                    break;
-                case 78:
-                    break; 
-                case 79:
-                    roundModel.AddBloonGroup(BloonType.Zomg, 1, 200, 201);
-                    roundModel.AddBloonGroup(BloonType.Zomg, 1, 1000, 1001);
+                    _loc2_ = 7 + round - 50;
+                    _loc3_ = 0;
+                    while (_loc3_ < _loc2_)
+                    {
+                        _loc4_ = 5;
+                        _loc5_ = rnd.Next(round);
+                        //if (diff == "medium")
+                        //{
+                        //    _loc5_ += 3;
+                        //}
+                        //if (diff == "hard")
+                        //{
+                        //    _loc5_ += 7;
+                        //}
+                        if (_loc5_ > 10)
+                        {
+                            _loc4_ = 6;
+                        }
+                        if (_loc5_ > 16)
+                        {
+                            _loc4_ = 7;
+                        }
+                        if (_loc5_ > 29)
+                        {
+                            _loc4_ = 8;
+                        }
+                        if (_loc5_ > 39)
+                        {
+                            _loc4_ = 9;
+                        }
+                        if (_loc5_ > 47)
+                        {
+                            _loc4_ = 10;
+                        }
+                        switch (_loc4_)
+                        {
+                            case 5:
+                                //ABSTL(10, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 6:
+                                //ABSTL(10, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 7:
+                                //ABSTL(10, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 8:
+                                //ABSTL(_loc1_ - 40, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 9:
+                                //ABSTL(_loc1_ - 42, _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                            case 10:
+                                //ABSTL(Math.round((_loc1_ - 50) / 3), _loc1_, _loc4_);
+                                roundModel.AddBloonGroup(BloonType.MoabFortified, 10, 0, 1000);
+                                break;
+                        }
+                        _loc3_++;
+                    }
                     break;
             }
         }
         public override void ModifyImpoppableRoundModels(RoundModel roundModel, int round)
         {
-            switch (round)
+            if ( round < 89 )
             {
-                case 80:
-                    break;
-                case 81:
-                    break;
-                case 82:
-                    break;
-                case 83:
-                    break;
-                case 84:
-                    break;
-                case 85:
-                    break;
-                case 86:
-                    break;
-                case 87:
-                    break;
-                case 88:
-                    break;
-                case 89:
-                    //First Fortified LMAO appearance
-                    roundModel.AddBloonGroup(BloonType.LeadCamo, 32, 0, 300);
-                    roundModel.AddBloonGroup<MosaicCamo>(32, 0, 300);
-
-                    roundModel.AddBloonGroup(BloonType.Ddt, 1, 800, 801);
-                    roundModel.AddBloonGroup<LmaoFortified>(1, 900, 901);
-                    break;
-                case 90:
-                    roundModel.AddBloonGroup<MosaicCamoFortified>(800, 0, 2000);
-
-                    roundModel.AddBloonGroup<Lmao>(3, 1000, 1500);
-                    roundModel.AddBloonGroup(BloonType.Bfb, 10, 1000, 1100);
-
-                    roundModel.AddBloonGroup<Cash>(1, 1200, 1201);
-                    break;
-                case 91:
-                    break;
-                case 92:
-                    break;
-                case 93:
-                    break;
-                case 94:
-                    //Round 95 copy
-                    roundModel.AddBloonGroup(BloonType.PurpleRegrowCamo, 500, 0, 1000);
-                    roundModel.AddBloonGroup<MosaicCamoRegrow>(250, 250, 1250);
-                    //LMAO and Ddt
-                    roundModel.AddBloonGroup(BloonType.Ddt, 15, 900, 2000);
-                    roundModel.AddBloonGroup<LmaoFortified>(10, 900, 2000);
-                    //Moab Final Rush
-                    roundModel.AddBloonGroup(BloonType.MoabFortified, 15, 2000, 2600);
-                    break;
-                case 95:
-                    break;
-                case 96:
-                    break;
-                case 97:
-                    break;
-                case 98:
-                    break;
-                case 99:
-                    roundModel.AddBloonGroup(BloonType.Bad, 1, 200, 201);
-                    roundModel.AddBloonGroup(BloonType.Bad, 1, 1500, 1501);
-                    break;
+            }
+            else
+            { 
             }
         }
         public override string GetHint(int round)
@@ -517,9 +505,9 @@ namespace MoarBloons
                 case 26:
                     return "Some tracks are hard on easy, and others are easy on hard. Ain\'t life funny.";
                 case 27:
-                    return "In BTD6, every tower type has 15 upgrades, split into 3 upgrade paths.";
+                    return "In BTD6, every tower type has 15 upgrades, split into 3 upgrade paths. (though this gamemode limits you to tier 2 upgrades.)";
                 case 28:
-                    return "(though this gamemode lmites you to tier 2 upgrades)";
+                    return "";
                 case 29:
                     return "Black bloons are immune to bombs, white ones are immune to freezing.";
                 case 30:
@@ -532,16 +520,24 @@ namespace MoarBloons
                     return "Beware the MOAB - its coming next level.";
                 case 37:
                     return "MOAB stands for Massive Ornary Air Blimp, not Mother Of All Bloons. Either way, it brings pain.";
-                case 3:
-                    return "and blues.";
-                case 3:
-                    return "and blues.";
-                case 3:
-                    return "and blues.";
-                case 3:
-                    return "and blues.";
-                case 3:
-                    return "and blues.";
+                case 40:
+                    return "If you manage to beat level 50, you can opt to play on in \'free play\' mode until you run out of lives.";
+                case 41:
+                    return "Need a cash injection? Heres 100 yellows - right after 9 browns. Sorry, it is level 42 after all.";
+                case 43:
+                    return "If a MOAB escapes, it\'s game over. Yes, that sucker will eat all your lives.";
+                case 44:
+                    return "Rainbows, Ceramics, then 100 straight whites.";
+                case 46:
+                    return "Super monkey plasma shoots even faster than laser vision.";
+                case 48:
+                    return "Nicely done. Getting difficult yet?";
+                case 49:
+                    return "Here comes the final level. It\'s hard. Don\'t forget if you win you can play on in free play mode.";
+                case 62:
+                    return "If you have played BTD5 you'll remember what Round 63 was like. If you are new to this game, let's just say: many tightly packed Ceramic Bloons.";
+                case 89:
+                    return "What is a DDT Bloon you may ask? Like a MOAB crossed with a Rainbow, Black, and Lead Bloon. In all the bad ways.";
                 default:
                     return "";
             }
