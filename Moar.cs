@@ -21,6 +21,7 @@ namespace MoarBloons
 
         public override string DisplayName => "Moar";
 
+        [System.Obsolete]
         public override bool CustomHints => true;
 
         public override void ModifyEasyRoundModels(RoundModel roundModel, int round)

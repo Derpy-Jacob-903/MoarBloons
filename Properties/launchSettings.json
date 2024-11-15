@@ -2,13 +2,14 @@
   "profiles": {
     "BloonsTD6": {
       "commandName": "Executable",
-      "executablePath": "$(BloonsTD6)/BloonsTD6Modded.exe",
+      "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
+      "commandLineArgs": "moddingDev",
       "workingDirectory": "$(BloonsTD6)"
     },
     "BloonsTD6 (ML Debug)": {
       "commandName": "Executable",
-      "executablePath": "$(BloonsTD6)/BloonsTD6Modded.exe",
-      "commandLineArgs": "--melonloader.debug",
+      "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
+      "commandLineArgs": "moddingDev --melonloader.debug",
       "workingDirectory": "$(BloonsTD6)"
     }
   }
